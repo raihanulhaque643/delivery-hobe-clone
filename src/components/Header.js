@@ -3,7 +3,7 @@ import logo from '../assets/logo.png'
 
 const Header = () => {
     return (
-        <div className="flex flex-row justify-between py-8">
+        <div className="flex flex-row justify-between my-4">
             <div className="flex flex-col justify-center">
                 <div className="text-2xl text-white font-semibold">
                 Your Needs,
