@@ -7,21 +7,25 @@ import {
   } from "react-router-dom";
 import Homepage from '../pages/Homepage.js'
 import ProductsPage from '../pages/ProductsPage.js'
+import Header from '../components/Header'
 
 const AppWrapper = () => {
     return (
-        <Router>
-        <div>
-          <Switch>
-            <Route path="/products">
-              <ProductsPage />
-            </Route>
-            <Route path="/">
-              <Homepage />
-            </Route>
-          </Switch>
+      <div className="flex min-w-screen max-w-auto min-h-screen max-h-auto bg-black justify-center">
+          <div className="min-h-screen max-h-auto bg-gray-900 px-8" style={{'width': '500px'}}>
+              <Header />
+              <Router>
+              <Switch>
+                <Route path="/products">
+                  <ProductsPage />
+                </Route>
+                <Route path="/">
+                  <Homepage />
+                </Route>
+              </Switch>
+              </Router>
+          </div>
         </div>
-      </Router>
     )
 }
 
