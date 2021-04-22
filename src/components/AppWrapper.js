@@ -9,6 +9,7 @@ import Homepage from '../pages/Homepage.js'
 import ProductsPage from '../pages/ProductsPage.js'
 import Header from '../components/Header'
 import Banner from '../components/Banner'
+import FAQs from '../components/FAQs'
 
 const AppWrapper = () => {
     return (
@@ -26,6 +27,7 @@ const AppWrapper = () => {
                 </Route>
               </Switch>
               </Router>
+              <FAQs />
           </div>
         </div>
     )
