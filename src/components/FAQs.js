@@ -11,7 +11,7 @@ const FAQs = () => {
       ];
 
     return (
-        <div className="bg-white text-gray-600 rounded-md p-4">
+        <div className="bg-white text-gray-600 rounded-md p-4 mx-8">
             <span className="font-semibold text-black">FAQs</span>
             <ol className="list-decimal px-4">
                 {
