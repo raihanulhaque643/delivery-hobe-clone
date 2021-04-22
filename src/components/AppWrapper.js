@@ -15,6 +15,7 @@ import Partners from './Partners.js';
 import StepOne from './StepOne.js';
 import StepTwo from './StepTwo.js';
 import StepThree from './StepThree.js';
+import Footer from './Footer.js';
 
 const AppWrapper = () => {
     return (
@@ -38,6 +39,7 @@ const AppWrapper = () => {
               <StepOne />
               <StepTwo /> 
               <StepThree />
+              <Footer />
           </div>
         </div>
     )
