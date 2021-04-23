@@ -1,5 +1,6 @@
 import React from 'react'
 import CategoryButton from './CategoryButton'
+import { Link } from "react-router-dom"
 
 const CategoryButtons = () => {
 
@@ -26,11 +27,13 @@ const CategoryButtons = () => {
             {
                 categories.map((category) => {
                     return <div className="my-4">
+                    <Link to={`products?category=${category.category_Id}`}>
                     <CategoryButton
                     id={category.category_Id}
                     name={category.category_Name}
                     gif={category.category_Gif}
                     />
+                    </Link>
                     </div>
                 })
             }

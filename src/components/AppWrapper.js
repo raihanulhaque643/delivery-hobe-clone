@@ -22,10 +22,9 @@ const AppWrapper = () => {
     return (
       <div className="flex min-w-screen max-w-auto min-h-screen max-h-auto bg-black justify-center">
           <div className="min-h-screen max-h-auto bg-gray-900 px-0" style={{'width': '500px'}}>
+              <Router>
               <Header />
               <Banner />
-              <CategoryButtons />
-              <Router>
               <Switch>
                 <Route path="/products">
                   <ProductsPage />
@@ -34,7 +33,6 @@ const AppWrapper = () => {
                   <Homepage />
                 </Route>
               </Switch>
-              </Router>
               <FAQs />
               <Avatar />
               <Partners />
@@ -42,6 +40,7 @@ const AppWrapper = () => {
               <StepTwo /> 
               <StepThree />
               <Footer />
+              </Router>
           </div>
         </div>
     )

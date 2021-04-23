@@ -1,5 +1,6 @@
 import React from 'react'
 import logo from '../assets/logo.png'
+import { Link } from "react-router-dom"
 
 const Header = () => {
     return (
@@ -13,7 +14,9 @@ const Header = () => {
                 </div>
             </div>
             <div className="flex items-center">
+                <Link to="/">
                 <img className="w-16 h-auto" src={logo} alt="not found!"/>
+                </Link>
             </div>
         </div>
     )
