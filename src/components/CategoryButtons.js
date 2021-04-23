@@ -161,7 +161,7 @@ const CategoryButtons = () => {
             category_Gif: 'https://s3-ap-southeast-1.amazonaws.com/dh-public-assets/wp-content/uploads/2021/02/26024920/Hotel-Resort-GIF-2-Cropped.gif'
         },
         {
-            category_Id: 984,
+            category_Id: 684,
             category_Name: 'Ice Cream',
             category_Gif: 'https://s3-ap-southeast-1.amazonaws.com/dh-public-assets/wp-content/uploads/2020/09/25083315/Icecream-v2-1.png'
         },
@@ -214,6 +214,7 @@ const CategoryButtons = () => {
                     return <div className="my-4">
                     <Link to={`products?category=${category.category_Id}`}>
                     <CategoryButton
+                    key={category.category_Id}
                     id={category.category_Id}
                     name={category.category_Name}
                     gif={category.category_Gif}
