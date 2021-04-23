@@ -16,6 +16,7 @@ import StepOne from './StepOne.js';
 import StepTwo from './StepTwo.js';
 import StepThree from './StepThree.js';
 import Footer from './Footer.js';
+import CategoryButtons from './CategoryButtons.js';
 
 const AppWrapper = () => {
     return (
@@ -23,6 +24,7 @@ const AppWrapper = () => {
           <div className="min-h-screen max-h-auto bg-gray-900 px-0" style={{'width': '500px'}}>
               <Header />
               <Banner />
+              <CategoryButtons />
               <Router>
               <Switch>
                 <Route path="/products">
