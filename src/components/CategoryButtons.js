@@ -208,7 +208,7 @@ const CategoryButtons = () => {
     ]
 
     return (
-        <div className="my-4 mx-8 flex justify-between flex-wrap">
+        <div className="my-4 mx-8 grid grid-cols-2 gap-x-8">
             {
                 categories.map((category) => {
                     return <div className="my-4">
