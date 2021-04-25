@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import Header from '../components/Header';
 import { db } from '../firebase/firebase';
+import Product from '../components/Product'
 
 const ProductsPage = () => {
 
@@ -57,8 +58,15 @@ const ProductsPage = () => {
         const prodsRef = db.collection(`${query.get('category')}`);
         const prods = await prodsRef.get()
         prods.forEach(doc => {
-            // console.log(doc.id, '=>', doc.data());
-            temp.push(doc.data())
+            const newObj = {
+                name: doc.data().name,
+                image: doc.data().image,
+                inStock: doc.data().inStock,
+                subcategory: doc.data().subcategory,
+                price: doc.data().price,
+                id: doc.id
+            }
+            temp.push(newObj)
           });
         setCompData(temp)
     }
@@ -80,16 +88,21 @@ const ProductsPage = () => {
     return (
         <div className="">
             <Header title={categoryCodeToName[`${query.get('category')}`]} />
-        <div className="my-4 mx-8 text-white">
-            {/* product page {query.get('category')} */}
+            <div className="my-4 mx-8 grid grid-cols-2 gap-x-8">
             {
                 compData && compData.map(prod=>{
                 return(
-                    <h4>{prod.name}</h4>
+                    <Product
+                    name={prod.name}
+                    image={prod.image}
+                    inStock={prod.inStock}
+                    price={prod.price}
+                    subcategory={prod.subcategory}
+                    />
                 )
                 })
             }
-        </div>
+            </div>
         </div>
     )
 }
