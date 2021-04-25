@@ -1,8 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import Header from '../components/Header';
+import { db } from '../firebase/firebase';
 
 const ProductsPage = () => {
+
+    let [compData, setCompData] = useState([])
 
     const categoryCodeToName = {
         607: 'Most Popular In Your Elaka',
@@ -47,6 +50,23 @@ const ProductsPage = () => {
         25: 'Toilertries'
     }
 
+    const getProducts = async () => {
+        
+        let temp = []
+
+        const prodsRef = db.collection(`${query.get('category')}`);
+        const prods = await prodsRef.get()
+        prods.forEach(doc => {
+            // console.log(doc.id, '=>', doc.data());
+            temp.push(doc.data())
+          });
+        setCompData(temp)
+    }
+
+    useEffect(() => {
+        getProducts()
+    }, [])
+
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
@@ -60,8 +80,15 @@ const ProductsPage = () => {
     return (
         <div className="">
             <Header title={categoryCodeToName[`${query.get('category')}`]} />
-        <div className="my-4 mx-8">
-            product page {query.get('category')}
+        <div className="my-4 mx-8 text-white">
+            {/* product page {query.get('category')} */}
+            {
+                compData && compData.map(prod=>{
+                return(
+                    <h4>{prod.name}</h4>
+                )
+                })
+            }
         </div>
         </div>
     )
