@@ -17,6 +17,7 @@ import StepTwo from './StepTwo.js';
 import StepThree from './StepThree.js';
 import Footer from './Footer.js';
 import CategoryButtons from './CategoryButtons.js';
+import Checkout from '../pages/Checkout.js';
 
 const AppWrapper = () => {
 
@@ -33,6 +34,10 @@ const AppWrapper = () => {
               <Switch>
                 <Route path="/products">
                   <ProductsPage setCartItems={setCartItems} cartItems={cartItems} />
+                </Route>
+                <Route path="/checkout">
+                  <Header />
+                  <Checkout cartItems={cartItems} />
                 </Route>
                 <Route path="/">
                   <Header />

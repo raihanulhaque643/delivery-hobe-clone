@@ -3,6 +3,8 @@ import { useLocation } from 'react-router';
 import Header from '../components/Header';
 import { db } from '../firebase/firebase';
 import Product from '../components/Product'
+import { Link } from "react-router-dom"
+
 
 const ProductsPage = ({ setCartItems, cartItems }) => {
 
@@ -88,6 +90,14 @@ const ProductsPage = ({ setCartItems, cartItems }) => {
     return (
         <div className="">
             <Header title={categoryCodeToName[`${query.get('category')}`]} />
+            <div className="w-full">
+            {
+                cartItems.length &&
+                <Link to="/checkout" className="my-4 bg-yellow-500 p-2 font-semibold fixed">
+                Checkout {cartItems.length}
+                </Link>
+            }
+            </div>
             <div className="my-4 mx-8 grid grid-cols-2 gap-x-8">
             {
                 compData && compData.map(prod=>{

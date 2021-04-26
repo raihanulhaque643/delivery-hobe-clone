@@ -8,8 +8,7 @@ const Product = ({ id, name, price, subcategory, inStock, image, setCartItems, c
             id,
             name,
             price,
-            image,
-            quantity: 1
+            image
         }
 
         setCartItems([...cartItems, newItem])
