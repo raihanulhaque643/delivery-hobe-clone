@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     BrowserRouter as Router,
     Switch,
@@ -19,13 +19,20 @@ import Footer from './Footer.js';
 import CategoryButtons from './CategoryButtons.js';
 
 const AppWrapper = () => {
+
+    let [cartItems, setCartItems] = useState([])
+
+    useEffect(() => {
+      console.log(cartItems)
+    }, [cartItems])
+
     return (
       <div className="flex min-w-screen max-w-auto min-h-screen max-h-auto bg-black justify-center">
           <div className="min-h-screen max-h-auto bg-gray-900 px-0" style={{'width': '500px'}}>
               <Router>
               <Switch>
                 <Route path="/products">
-                  <ProductsPage />
+                  <ProductsPage setCartItems={setCartItems} cartItems={cartItems} />
                 </Route>
                 <Route path="/">
                   <Header />

@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import { db } from '../firebase/firebase';
 import Product from '../components/Product'
 
-const ProductsPage = () => {
+const ProductsPage = ({ setCartItems, cartItems }) => {
 
     let [compData, setCompData] = useState([])
 
@@ -93,11 +93,15 @@ const ProductsPage = () => {
                 compData && compData.map(prod=>{
                 return(
                     <Product
+                    key={prod.id}
+                    id={prod.id}
                     name={prod.name}
                     image={prod.image}
                     inStock={prod.inStock}
                     price={prod.price}
                     subcategory={prod.subcategory}
+                    setCartItems={setCartItems}
+                    cartItems={cartItems}
                     />
                 )
                 })
