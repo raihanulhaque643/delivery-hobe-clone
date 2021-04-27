@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import CartItem from '../components/CartItem'
 
-const Checkout = ({ cartItems }) => {
+const Checkout = ({ cartItems, deleteItem }) => {
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -20,6 +20,7 @@ const Checkout = ({ cartItems }) => {
                     id={item.id}
                     price={item.price}
                     image={item.image}
+                    deleteItem={(id) => deleteItem(id)}
                     />
                 })
             }

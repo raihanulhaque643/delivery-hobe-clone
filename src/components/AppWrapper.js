@@ -24,6 +24,11 @@ const AppWrapper = () => {
     let [cartItems, setCartItems] = useState([])
     let [cartPrice, setCartPrice] = useState(0)
 
+    const deleteItem = (id) => {
+      const items = cartItems.filter((item) => item.id !== id)
+      setCartItems(items)
+    }
+
     useEffect(() => {
 
       let price = 0;
@@ -54,7 +59,7 @@ const AppWrapper = () => {
                 </Route>
                 <Route path="/checkout">
                   <Header />
-                  <Checkout cartItems={cartItems} />
+                  <Checkout cartItems={cartItems} deleteItem={(id) => deleteItem(id)} />
                 </Route>
                 <Route path="/">
                   <Header />

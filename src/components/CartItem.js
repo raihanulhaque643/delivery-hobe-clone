@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CartItem = ({ id, name, price, image }) => {
+const CartItem = ({ id, name, price, image, deleteItem }) => {
     return (
         <div className="flex flex-col min-h-56 max-h-auto border rounded-md p-2 my-2 border-b-4">
             <div className="flex flex-row w-full border-b">
@@ -11,8 +11,17 @@ const CartItem = ({ id, name, price, image }) => {
                     {name}
                 </div>
             </div>
-            <div className="flex flex-row justify-end py-2 font-semibold">
+            <div className="flex flex-row justify-between py-2 font-semibold">
+                <div className="flex flex-col">
+                    <button 
+                    className="p-1 text-red-600 font-bold rounded-md text-xs border"
+                    onClick={() => deleteItem(id)}>
+                        Remove from cart
+                    </button>
+                </div>
+                <div className="flex flex-col">
                 Tk. {price}
+                </div>
             </div>
         </div>
     )
