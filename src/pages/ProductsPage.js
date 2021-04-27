@@ -4,11 +4,14 @@ import Header from '../components/Header';
 import { db } from '../firebase/firebase';
 import Product from '../components/Product'
 import { Link } from "react-router-dom"
+import Spin from '../assets/spin.gif'
 
 
 const ProductsPage = ({ setCartItems, cartItems, cartPrice }) => {
 
     let [compData, setCompData] = useState([])
+
+    let [loading, setLoading] = useState(true)
 
     const categoryCodeToName = {
         607: 'Most Popular In Your Elaka',
@@ -72,6 +75,7 @@ const ProductsPage = ({ setCartItems, cartItems, cartPrice }) => {
             temp.push(newObj)
           });
         setCompData(temp)
+        setLoading(false)
     }
 
     useEffect(() => {
@@ -91,6 +95,12 @@ const ProductsPage = ({ setCartItems, cartItems, cartPrice }) => {
     return (
         <div className="">
             <Header title={categoryCodeToName[`${query.get('category')}`]} />
+            {
+                loading &&
+                <div className="w-full flex justify-center">
+                    <img src={Spin} alt="" className="rounded-full" style={{'width': '36px', 'height': 'auto'}}/>
+                </div>
+            }
             {
                 cartItems.length ? 
                 <div className="bg-black h-24 p-2 fixed bottom-0" style={{'width': '500px'}}>
