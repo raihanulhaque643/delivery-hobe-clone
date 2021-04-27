@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import CartItem from '../components/CartItem'
 
 const Checkout = ({ cartItems }) => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     return (
         <div className="bg-white mx-8 my-4 rounded-md p-4 flex flex-col">
             <div className="flex flex-row text-xl font-semibold border-b-2">

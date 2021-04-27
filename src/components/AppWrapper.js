@@ -22,9 +22,19 @@ import Checkout from '../pages/Checkout.js';
 const AppWrapper = () => {
 
     let [cartItems, setCartItems] = useState([])
+    let [cartPrice, setCartPrice] = useState(0)
 
     useEffect(() => {
-      console.log(cartItems)
+
+      let price = 0;
+
+      cartItems.forEach((item) => {
+        price = price + Number(item.price)
+      })
+
+      setCartPrice(price)
+
+      
     }, [cartItems])
 
     return (
@@ -33,7 +43,7 @@ const AppWrapper = () => {
               <Router>
               <Switch>
                 <Route path="/products">
-                  <ProductsPage setCartItems={setCartItems} cartItems={cartItems} />
+                  <ProductsPage setCartItems={setCartItems} cartItems={cartItems} cartPrice={cartPrice} />
                 </Route>
                 <Route path="/checkout">
                   <Header />

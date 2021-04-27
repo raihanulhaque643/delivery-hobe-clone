@@ -6,7 +6,7 @@ import Product from '../components/Product'
 import { Link } from "react-router-dom"
 
 
-const ProductsPage = ({ setCartItems, cartItems }) => {
+const ProductsPage = ({ setCartItems, cartItems, cartPrice }) => {
 
     let [compData, setCompData] = useState([])
 
@@ -57,7 +57,8 @@ const ProductsPage = ({ setCartItems, cartItems }) => {
         
         let temp = []
 
-        const prodsRef = db.collection(`${query.get('category')}`);
+        // const prodsRef = db.collection(`${query.get('category')}`);
+        const prodsRef = db.collection('607');
         const prods = await prodsRef.get()
         prods.forEach(doc => {
             const newObj = {
@@ -90,14 +91,22 @@ const ProductsPage = ({ setCartItems, cartItems }) => {
     return (
         <div className="">
             <Header title={categoryCodeToName[`${query.get('category')}`]} />
-            <div className="w-full">
             {
-                cartItems.length &&
-                <Link to="/checkout" className="my-4 bg-yellow-500 p-2 font-semibold fixed">
-                Checkout {cartItems.length}
-                </Link>
+                cartItems.length ? 
+                <div className="bg-black h-24 p-2 fixed bottom-0" style={{'width': '500px'}}>
+                    <div className="flex flex-row justify-between text-white mb-2">
+                        <div className="font-semibold">{cartItems.length} Products</div>
+                        <div className="font-semibold">Cart Price: ৳ {cartPrice}</div>
+                    </div>
+                    <Link to="/checkout" className="">
+                    <button className="w-full bg-yellow-300 py-2 rounded font-semibold">
+                    Checkout
+                    </button>
+                    </Link>
+                </div>
+                :
+                <div></div>
             }
-            </div>
             <div className="my-4 mx-8 grid grid-cols-2 gap-x-8">
             {
                 compData && compData.map(prod=>{
