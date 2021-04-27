@@ -44,6 +44,13 @@ const AppWrapper = () => {
               <Switch>
                 <Route path="/products">
                   <ProductsPage setCartItems={setCartItems} cartItems={cartItems} cartPrice={cartPrice} />
+                  <FAQs />
+                  <Avatar />
+                  <Partners />
+                  <StepOne />
+                  <StepTwo /> 
+                  <StepThree />
+                  <Footer />
                 </Route>
                 <Route path="/checkout">
                   <Header />
@@ -53,15 +60,15 @@ const AppWrapper = () => {
                   <Header />
                   <Banner />
                   <Homepage />
+                  <FAQs />
+                  <Avatar />
+                  <Partners />
+                  <StepOne />
+                  <StepTwo /> 
+                  <StepThree />
+                  <Footer />
                 </Route>
               </Switch>
-              <FAQs />
-              <Avatar />
-              <Partners />
-              <StepOne />
-              <StepTwo /> 
-              <StepThree />
-              <Footer />
               </Router>
           </div>
         </div>
