@@ -4,14 +4,31 @@ const Product = ({ id, name, price, subcategory, inStock, image, setCartItems, c
 
     const handleClick = () => {
 
-        let newItem = {
-            id,
-            name,
-            price,
-            image
+        const itemExists = cartItems.find((item) => {
+            return item.id === id
+        })
+
+        if (!itemExists) {
+            let newItem = {
+                id,
+                name,
+                price,
+                image,
+                quantity: 1
+            }
+    
+            setCartItems([...cartItems, newItem])
+        } else {
+            let items = cartItems;
+            for (let i=0; i<items.length; i++) {
+                if(items[i].id === id) {
+                    items[i].quantity += 1
+                    break
+                }
+            }
+            setCartItems(items)
         }
 
-        setCartItems([...cartItems, newItem])
     }
 
     return (

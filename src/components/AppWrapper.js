@@ -59,7 +59,7 @@ const AppWrapper = () => {
                 </Route>
                 <Route path="/checkout">
                   <Header />
-                  <Checkout cartItems={cartItems} deleteItem={(id) => deleteItem(id)} />
+                  <Checkout cartItems={cartItems} deleteItem={(id) => deleteItem(id)}/>
                 </Route>
                 <Route path="/">
                   <Header />
