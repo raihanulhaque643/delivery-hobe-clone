@@ -32,7 +32,7 @@ const Product = ({ id, name, price, subcategory, inStock, image, setCartItems, c
     }
 
     return (
-        <div className="w-auto md:h-auto rounded-xl flex justify-center items-center text-black font-semibold my-2 py-2 bg-white flex flex-col">
+        <div className={`w-auto md:h-auto rounded-xl flex justify-center items-center text-black font-semibold my-2 py-2 bg-white flex flex-col ${inStock ? "" : "opacity-40"}`}>
             <img src={image} alt="" style={{'objectFit': 'contain', 'height': '140px', 'width': '140px'}}/>
             <div className="flex flex-col w-full h-auto p-2">
             <div className="w-full flex rounded-b-xl text-sm sm:text-md h-10">
@@ -43,6 +43,7 @@ const Product = ({ id, name, price, subcategory, inStock, image, setCartItems, c
             </div>
             <div className="w-full rounded-b-xl text-sm sm:text-md h-10">
             <button
+            disabled={!inStock}
             onClick={() => handleClick()}
             className="border w-full font-semibold p-2 rounded-md">
                 <div className="flex flex-row justify-between">
