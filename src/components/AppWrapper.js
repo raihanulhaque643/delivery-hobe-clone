@@ -23,24 +23,34 @@ const AppWrapper = () => {
 
     let [cartItems, setCartItems] = useState([])
     let [cartPrice, setCartPrice] = useState(0)
+    let [totalNumberOfCartItems, setTotalNumberOfCartItems] = useState(0)
+    let [didCartUpdate, setDidCardUpdate] = useState(false)
 
     const deleteItem = (id) => {
       const items = cartItems.filter((item) => item.id !== id)
       setCartItems(items)
     }
 
+    // compute total number of cart items when cart items change
     useEffect(() => {
-
-      let price = 0;
-
+      let total = 0;
       cartItems.forEach((item) => {
-        price = price + Number(item.price)
+        total = total + (item.quantity)
       })
+      setTotalNumberOfCartItems(total)
+      setDidCardUpdate(false)
+    }, [didCartUpdate, cartItems])
 
+
+    // compute total cart price when cart items change
+    useEffect(() => {
+      let price = 0;
+      cartItems.forEach((item) => {
+        price = price + (Number(item.price) * item.quantity)
+      })
       setCartPrice(price)
-
-      
-    }, [cartItems])
+      setDidCardUpdate(false)
+    }, [didCartUpdate, cartItems])
 
     return (
       <div className="flex min-w-screen max-w-auto min-h-screen max-h-auto bg-black justify-center">
@@ -48,7 +58,7 @@ const AppWrapper = () => {
               <Router>
               <Switch>
                 <Route path="/products">
-                  <ProductsPage setCartItems={setCartItems} cartItems={cartItems} cartPrice={cartPrice} />
+                  <ProductsPage setCartItems={setCartItems} cartItems={cartItems} cartPrice={cartPrice} setDidCardUpdate={setDidCardUpdate} totalNumberOfCartItems={totalNumberOfCartItems} />
                   <FAQs />
                   <Avatar />
                   <Partners />

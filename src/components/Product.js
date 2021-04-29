@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Product = ({ id, name, price, subcategory, inStock, image, setCartItems, cartItems }) => {
+const Product = ({ id, name, price, subcategory, inStock, image, setCartItems, cartItems, setDidCardUpdate }) => {
 
     const handleClick = () => {
 
@@ -18,6 +18,7 @@ const Product = ({ id, name, price, subcategory, inStock, image, setCartItems, c
             }
     
             setCartItems([...cartItems, newItem])
+            setDidCardUpdate(true)
         } else {
             let items = cartItems;
             for (let i=0; i<items.length; i++) {
@@ -27,6 +28,7 @@ const Product = ({ id, name, price, subcategory, inStock, image, setCartItems, c
                 }
             }
             setCartItems(items)
+            setDidCardUpdate(true)
         }
 
     }

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom"
 import Spin from '../assets/spin.gif'
 
 
-const ProductsPage = ({ setCartItems, cartItems, cartPrice }) => {
+const ProductsPage = ({ setCartItems, cartItems, cartPrice, setDidCardUpdate, totalNumberOfCartItems }) => {
 
     let [compData, setCompData] = useState([])
 
@@ -105,7 +105,7 @@ const ProductsPage = ({ setCartItems, cartItems, cartPrice }) => {
                 cartItems.length ? 
                 <div className="bg-black h-24 p-2 fixed bottom-0" style={{'width': '500px'}}>
                     <div className="flex flex-row justify-between text-white mb-2">
-                        <div className="font-semibold">{cartItems.length} Products</div>
+                        <div className="font-semibold">{totalNumberOfCartItems} Products</div>
                         <div className="font-semibold">Cart Price: ৳ {cartPrice}</div>
                     </div>
                     <Link to="/checkout" className="">
@@ -131,6 +131,7 @@ const ProductsPage = ({ setCartItems, cartItems, cartPrice }) => {
                     subcategory={prod.subcategory}
                     setCartItems={setCartItems}
                     cartItems={cartItems}
+                    setDidCardUpdate={setDidCardUpdate}
                     />
                 )
                 })
