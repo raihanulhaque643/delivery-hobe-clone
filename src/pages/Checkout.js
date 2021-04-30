@@ -27,7 +27,7 @@ const Checkout = ({ cartItems, deleteItem }) => {
 
 
     useEffect(() => {
-        // window.scrollTo(0, 0)
+        window.scrollTo(0, 0)
     }, [])
 
     return (
@@ -39,6 +39,7 @@ const Checkout = ({ cartItems, deleteItem }) => {
                 cartItems &&
                 cartItems.map((item) => {
                     return <CartItem
+                    key={item.id}
                     name={item.name}
                     id={item.id}
                     price={item.price}
